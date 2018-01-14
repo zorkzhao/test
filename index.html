@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Wing Demo</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="assets/css/docs.min.css" rel="stylesheet">
+
+<link href="http://style.c.aliimg.com/m/lofty/ui/iconfont/1.0/iconfont.css" rel="stylesheet"/>
+
+<<<<<<< Updated upstream
+		Wing.navigator.rewrite(type, url, id);
+
+		//var result = _wingNative.syncHandler("rewrite", [type, url,id]);
+	}
+
+	function loginout() {
+
+		if (confirm("注销该用户么？")) {
+			Wing.navigator.debug.logout();
+			$('#user_loginout').hide();
+			$('#user_login').show();
+		}
+
+	}
+
+    function resumeFunc() {
+        Wing.navigator.rewrite('reload', 'file:///android_asset/view/index.html');
+        Wing.navigator.callback.unregister('onResume', resumeFunc);
+    }
+
+    function onAlbums(result) {
+        var photoIds = [];
+        for (var i = 0, l = result.length; i < l; i ++) {
+            var v = result[i];
+            photoIds[i] = v.id;
+        }
+
+        Wing.navigator.album.uploadPhotos('ptpali08', photoIds);
+    }
+
+    function onCamera(photos) {
+        if (photos && photos[0] && photos[0].thumbnail) {
+            $('.camera-result').prepend('<img src="' + photos[0].thumbnail + '" />');
+        }
+    }
+
+</script>
+=======
+>>>>>>> Stashed changes
+<script src="../wing.android.js" />
+<script src=""></script>
+</head>
+
+<body>
+
+	<div class="container">
+<<<<<<< Updated upstream
+		<div class="alert alert-success" id="user_loginout">
+			<strong>当前登录名:</strong> <a href="#" onclick="loginout();"
+				class="alert-link"><span id="nick"></span>(点击我可以注销)</a>
+		</div>
+
+		<div class="alert alert-success" id="user_login">
+			<strong>当前还没有登陆:</strong> <a href="#" onclick="Wing.navigator.callback.register('onResume', resumeFunc);rewrite('startForResult','com.alibaba.android.wing.login','1');"	class="alert-link">点击我登陆</a>
+		</div>
+
+        <button type="button" onclick="Wing.navigator.ui.open('http://detail.m.1688.com/page/index.html?offerId=36394179170',{'dialog':true,'height':400})" >测试弹出</button>
+
+        <button type="button" onclick="Wing.navigator.camera(onCamera);" >拍照</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" onclick="Wing.navigator.album.photoPicker(onAlbums);" >相册</button>
+		<br/><br/>
+        <div class="camera-result"></div><br/><br/>
+        <div class="album-result"></div><br/><br/>
+
+         <a href="http://detail.m.1688.com/page/index.html?offerId=36394179170"
+             class="album alert-link"><h1>Detail测试</h1></a><br><br><br>
+             
+         <a href="http://winport.m.1688.com/page/index.html?memberId=ptpali08"
+             class="album alert-link"><h1>旺铺测试</h1></a><br><br><br>
+             
+         <a href="http://qatest.m.1688.com"
+             class="album alert-link"><h1>测试用例</h1></a><br><br><br>
+		<!-- <p>
+			提供Product的默认入口
+			<button type="button" class="btn btn-success"
+				onclick="rewrite('file:///android_asset/view/listener.html');">Debug设置</button>
+		</p>
+		 -->
+=======
+	<!--	<h3>产品应用中心</h3>		-->
+>>>>>>> Stashed changes
+		<div class="row bs-glyphicons">
+			<ul id="product_portal" class="bs-glyphicons-list">
+			</ul>
+		</div>
+	</div>
+
+
+<!--
+
+	<style type="text/css">
+ 		ul {
+ 			list-style: none;
+ 		}
+ 		ul li {
+ 			float: left;
+ 			height: 8rem;
+ 		}
+ 		ul li div {
+ 			text-align: center;
+ 		}
+ 		i {
+ 			display: block;
+ 			font-family: 'iconfont';
+ 			font-size: 2rem;
+ 			font-style: normal;
+ 			width: 5rem;
+ 			height: 6rem;
+ 			line-height: 6rem;
+ 			text-align: center;
+ 			color: #666;
+ 		}
+ 		ul li:nth-child(2) i {
+ 			color: #ff7300;
+ 		}
+ 		ul li:nth-child(3) i {
+ 			color: lightblue;
+ 		}
+ 		ul li:nth-child(4) i {
+ 			color: cyan;
+ 		}
+ 		ul li:nth-child(5) i {
+ 			color: #ccc;
+ 		}
+ 		ul li:nth-child(6) i {
+ 			color: yellow;
+ 		}
+ 		i:hover {
+ 			font-size: 4rem;
+ 			-webkit-transition: font-size 0.25s ease-out 0s;
+			-moz-transition: font-size 0.25s ease-out 0s;
+			-ms-transition: font-size 0.25s ease-out 0s;
+			-o-transition: font-size 0.25s ease-out 0s;
+ 		}
+ 		.clearfix:after {
+ 			clear: both;
+ 			display: block;
+ 			height: 0;
+ 			content: '\0020';
+ 		}
+ 	</style>
+-->
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="js/jquery.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
+
+
+	<script type="text/javascript">
+		//
+
+		Wing.navigator.back.listener(function() {
+			if(confirm("确定要关闭么？")){
+				Wing.navigator.back.finish();
+			}
+		});
+
+
+		$(document).ready(function() {
+			var user = Wing.navigator.debug.getNick();
+			if(user&&user.data&&user.data.nick){
+				$('#nick').html(user.data.nick);
+				$('#user_loginout').show();
+				$('#user_login').hide();
+			}else{
+				$('#user_login').show();
+				$('#user_loginout').hide();
+			}
+
+			var getAllProduct = function() {
+
+			var result = _wingNative.syncHandler('product',
+					[ "getAll" ]);
+			if (!result) {
+				alert("正在加载产品，请耐心等候，第一次有点慢");
+				setTimeout(getAllProduct, 8000);
+			} else {
+
+				var json = eval("(" + result + ")");
+
+				if (json.data) {
+					var products = json.data;
+					for ( var i = 0; i < products.length; i++) {
+						var product = products[i];
+						var title = (product.title ? product.title
+								: product.name);
+
+						var string = "<li><span class=' glyphicon glyphicon-th'><"+"/span><span class='glyphicon-class'> "
+								+ title + "<"+"/span><"+"/li>";
+
+						$("#product_portal").append(string);
+					}
+				}
+				Wing.navigator.loading.hide();
+				$.getScript("http://wing.alibaba-inc.com:8080/target/target-script-min.js#anonymous");
+			}
+		}
+
+		setTimeout(function() {
+			getAllProduct();
+		}, 500);
+
+
+	});
+
+	Wing.require('wing/channel').onWingReady.subscribe(function(){
+        Wing.navigator.tooltip('Wing Ready');
+        Wing.navigator.tooltip(Wing.navigator.device.wingconcat+":"+Wing.navigator.device.version+":"+Wing.navigator.appinfo.version);
+
+        Wing.navigator.album.registerUploadCallbackFunc(function (data) {
+            $('.album-result').prepend('<p>' + JSON.stringify(data) + '<'+'/p><br>');
+        });
+	});
+
+    function getlocation(){
+            Wing.navigator.location('',function(rs){
+                alert(rs);
+            });
+    }
+	</script>
+
+
+</body>
+</html>
